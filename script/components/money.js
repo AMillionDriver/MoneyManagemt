@@ -1,16 +1,16 @@
-const STORAGE_KEY = "myDashboard.transactions";
+const STORAGE_KEY = 'myDashboard.transactions';
 
 // Ambil elemen HTML yang dipakai oleh dashboard.
-const form = document.querySelector("#transactionForm");
-const incomeInput = document.querySelector("#uangMasuk");
-const expenseInput = document.querySelector("#uangKeluar");
-const dateInput = document.querySelector("#tanggal");
-const totalIncomeEl = document.querySelector("#totalMasuk");
-const totalExpenseEl = document.querySelector("#totalKeluar");
-const balanceEl = document.querySelector("#saldo");
-const tableBody = document.querySelector("#transactionBody");
+const form = document.querySelector('#transactionForm');
+const incomeInput = document.querySelector('#uangMasuk');
+const expenseInput = document.querySelector('#uangKeluar');
+const dateInput = document.querySelector('#tanggal');
+const totalIncomeEl = document.querySelector('#totalMasuk');
+const totalExpenseEl = document.querySelector('#totalKeluar');
+const balanceEl = document.querySelector('#saldo');
+const tableBody = document.querySelector('#transactionBody');
 
-let transactions = loadTransactions();
+const transactions = loadTransactions();
 
 // Simpan dan ambil transaksi dari localStorage.
 function loadTransactions() {
@@ -41,31 +41,31 @@ function toPositiveNumber(value) {
 }
 
 function toRupiah(value) {
-  return new Intl.NumberFormat("id-ID", {
-    style: "currency",
-    currency: "IDR",
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
     maximumFractionDigits: 0,
   }).format(value);
 }
 
 function formatDate(value) {
-  return new Intl.DateTimeFormat("id-ID", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
+  return new Intl.DateTimeFormat('id-ID', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
   }).format(new Date(`${value}T00:00:00`));
 }
 
 function getTransactionNote(income, expense) {
   if (income > 0 && expense > 0) {
-    return "Pemasukan dan pengeluaran";
+    return 'Pemasukan dan pengeluaran';
   }
 
   if (income > 0) {
-    return "Pemasukan";
+    return 'Pemasukan';
   }
 
-  return "Pengeluaran";
+  return 'Pengeluaran';
 }
 
 function setTodayAsDefault() {
@@ -100,17 +100,15 @@ function renderTable() {
   }
 
   tableBody.innerHTML = transactions
-    .map((transaction) => {
-      return `
+    .map((transaction) => `
         <tr class="border-t border-slate-100">
           <td class="px-5 py-4 text-slate-600">${formatDate(transaction.date)}</td>
           <td class="px-5 py-4 font-semibold text-emerald-600">${toRupiah(transaction.income)}</td>
           <td class="px-5 py-4 font-semibold text-rose-600">${toRupiah(transaction.expense)}</td>
           <td class="px-5 py-4 text-slate-600">${transaction.note}</td>
         </tr>
-      `;
-    })
-    .join("");
+      `)
+    .join('');
 }
 
 function renderDashboard() {
@@ -127,12 +125,12 @@ function handleSubmit(event) {
   const date = dateInput.value;
 
   if (!date) {
-    alert("Tanggal wajib diisi.");
+    alert('Tanggal wajib diisi.');
     return;
   }
 
   if (income <= 0 && expense <= 0) {
-    alert("Isi uang masuk atau uang keluar terlebih dahulu.");
+    alert('Isi uang masuk atau uang keluar terlebih dahulu.');
     return;
   }
 
@@ -158,17 +156,17 @@ function handleReset() {
 
 // Jalankan logic hanya kalau elemen dashboard tersedia.
 if (
-  form &&
-  incomeInput &&
-  expenseInput &&
-  dateInput &&
-  totalIncomeEl &&
-  totalExpenseEl &&
-  balanceEl &&
-  tableBody
+  form
+  && incomeInput
+  && expenseInput
+  && dateInput
+  && totalIncomeEl
+  && totalExpenseEl
+  && balanceEl
+  && tableBody
 ) {
-  form.addEventListener("submit", handleSubmit);
-  form.addEventListener("reset", handleReset);
+  form.addEventListener('submit', handleSubmit);
+  form.addEventListener('reset', handleReset);
   setTodayAsDefault();
   renderDashboard();
 }
