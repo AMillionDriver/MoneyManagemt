@@ -1,1 +1,1 @@
-import "./components/money.js";
+import './components/money.js';
