@@ -51,7 +51,7 @@ MoneyManagemt/
 Getting Started
 
 Follow these steps to run the project locally.
-
+```md
 1. Clone the repository
 git clone https://github.com/guarxx/MoneyManagemt.git
 2. Go to the project folder
@@ -70,11 +70,11 @@ Open index.html directly in your browser, or use the Live Server extension in VS
 This project uses ESLint with the Airbnb JavaScript style guide.
 
 To check JavaScript code:
-
+```bash
 npm run lint
 
 To automatically fix supported lint problems:
-
+```bash
 npm run lint:fix
 
 Make sure your code passes the lint check before opening a pull request.
@@ -84,7 +84,7 @@ Make sure your code passes the lint check before opening a pull request.
 Contributions are welcome.
 
 Basic contribution flow:
-
+```
 Fork this repository
 Create a new branch
 git checkout -b feature/your-feature-name
@@ -96,7 +96,8 @@ git commit -m "feat: add your feature"
 Push your branch
 git push origin feature/your-feature-name
 Open a pull request
-👥 Contributors
+
+Contributors
 
 Thanks to everyone who contributes to this project.
 
