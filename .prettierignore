@@ -5,3 +5,6 @@ coverage/
 styles/output.css
 styles/input.css
 package-lock.json
+.vscode
+.github
+.agents
