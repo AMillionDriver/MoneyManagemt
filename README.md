@@ -51,7 +51,7 @@ MoneyManagemt/
 Getting Started
 
 Follow these steps to run the project locally.
-```md
+```md      
 1. Clone the repository
 git clone https://github.com/guarxx/MoneyManagemt.git
 2. Go to the project folder
