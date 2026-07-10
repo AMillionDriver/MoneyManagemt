@@ -10,8 +10,6 @@ const totalExpenseEl = document.querySelector('#totalKeluar');
 const balanceEl = document.querySelector('#saldo');
 const tableBody = document.querySelector('#transactionBody');
 
-const transactions = loadTransactions();
-
 // Simpan dan ambil transaksi dari localStorage.
 function loadTransactions() {
   const savedTransactions = localStorage.getItem(STORAGE_KEY);
@@ -26,6 +24,7 @@ function loadTransactions() {
     return [];
   }
 }
+const transactions = loadTransactions();
 
 function saveTransactions() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
@@ -100,14 +99,16 @@ function renderTable() {
   }
 
   tableBody.innerHTML = transactions
-    .map((transaction) => `
+    .map(
+      (transaction) => `
         <tr class="border-t border-slate-100">
           <td class="px-5 py-4 text-slate-600">${formatDate(transaction.date)}</td>
           <td class="px-5 py-4 font-semibold text-emerald-600">${toRupiah(transaction.income)}</td>
           <td class="px-5 py-4 font-semibold text-rose-600">${toRupiah(transaction.expense)}</td>
           <td class="px-5 py-4 text-slate-600">${transaction.note}</td>
         </tr>
-      `)
+      `
+    )
     .join('');
 }
 
@@ -156,14 +157,14 @@ function handleReset() {
 
 // Jalankan logic hanya kalau elemen dashboard tersedia.
 if (
-  form
-  && incomeInput
-  && expenseInput
-  && dateInput
-  && totalIncomeEl
-  && totalExpenseEl
-  && balanceEl
-  && tableBody
+  form &&
+  incomeInput &&
+  expenseInput &&
+  dateInput &&
+  totalIncomeEl &&
+  totalExpenseEl &&
+  balanceEl &&
+  tableBody
 ) {
   form.addEventListener('submit', handleSubmit);
   form.addEventListener('reset', handleReset);

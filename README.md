@@ -27,7 +27,7 @@ This project helps users manage task-related financial records through a clean d
 
 ## 📁 Project Structure
 
-```txt
+````txt
 MoneyManagemt/
 ├── asset/
 │   ├── header_bg.jpg
@@ -84,7 +84,8 @@ Make sure your code passes the lint check before opening a pull request.
 Contributions are welcome.
 
 Basic contribution flow:
-```
+````
+
 Fork this repository
 Create a new branch
 git checkout -b feature/your-feature-name
